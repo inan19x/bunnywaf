@@ -1,7 +1,7 @@
 # BunnyWAF
 
 BunnyWAF is a lightweight, playground-level, signature-based Web Application Firewall (WAF) - detect only
-<br/>
+<br/><br/>
 BunnyWAF focuses on detecting:<br/>
 SQL Injection (SQLi)<br/>
 Cross-Site Scripting (XSS)<br/><br/>
