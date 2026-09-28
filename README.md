@@ -22,3 +22,6 @@ The detection signatures are stored separately, making them easy to add or modif
 ### Example alert:
 15:20:53 ALERT BunnyWAF: host=192.168.1.51 method=GET request=/product?id=1%20UNION%20SELECT%20username%20FROM%20users type=SQLI
 
+### Apache LogFormat used in playground
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
