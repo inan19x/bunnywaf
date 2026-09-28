@@ -470,15 +470,32 @@ def process_line(
     iis_fields,
 ):
     """
-    Process one access-log line.
+    Process one access log line.
 
-    Returns the updated IIS field definition.
+    Returns the updated IIS field mapping.
     """
 
-    line = line.rstrip("\r\n")
-
-    # IIS W3C processing.
     if log_type == "iis":
+
+        if not iis_fields:
+
+            iis_fields = [
+                "date",
+                "time",
+                "s-ip",
+                "cs-method",
+                "cs-uri-stem",
+                "cs-uri-query",
+                "s-port",
+                "cs-username",
+                "c-ip",
+                "cs(User-Agent)",
+                "cs(Referer)",
+                "sc-status",
+                "sc-substatus",
+                "sc-win32-status",
+                "time-taken",
+            ]
 
         if line.startswith("#Fields:"):
 
@@ -486,17 +503,13 @@ def process_line(
                 len("#Fields:"):
             ].strip()
 
-            iis_fields = (
-                fields_string.split()
-            )
+            iis_fields = fields_string.split()
 
             return iis_fields
 
         # Ignore IIS comments and metadata.
-        if line.startswith("#"):
-            return iis_fields
 
-        if not iis_fields:
+        if line.startswith("#"):
             return iis_fields
 
         entry = parse_iis_line(
@@ -505,7 +518,9 @@ def process_line(
         )
 
     else:
-        # Apache / Nginx.
+
+        # Apache / Nginx
+
         entry = parse_apache_nginx_line(
             line
         )
@@ -536,6 +551,7 @@ def process_line(
     return iis_fields
 
 
+
 def scan_log(
     config,
     signatures,
@@ -556,14 +572,6 @@ def scan_log(
 
     print(
         f"BunnyWAF monitoring: {access_log}"
-    )
-
-    print(
-        "Existing log entries will be ignored."
-    )
-
-    print(
-        "Waiting for new requests..."
     )
 
     for line in follow_log(
