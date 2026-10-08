@@ -3,8 +3,8 @@
 BunnyWAF is a lightweight, playground-level, signature-based Web Application Firewall (WAF) - detect only
 <br/><br/>
 BunnyWAF focuses on detecting:<br/>
-SQL Injection (SQLi)<br/>
-Cross-Site Scripting (XSS)<br/><br/>
+-SQL Injection (SQLi)<br/>
+-Cross-Site Scripting (XSS)<br/><br/>
 
 ## Supported Web Server
 It can read access logs from:<br/>
@@ -25,3 +25,7 @@ The detection signatures are stored separately, making them easy to add or modif
 ### Apache LogFormat used in playground
 LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined<br/>
 LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
+
+### ACME.LAB &trade;
+BunnyWAF is part of the cyber playground ACME.LAB's tool series as one of NEST SIEM components.<br/><br/>
+<img width="879" height="261" alt="BunnyWAF" src="https://github.com/user-attachments/assets/8b72ef5f-6127-49a5-b843-a8bf2a486c80" /><br/><br/>
